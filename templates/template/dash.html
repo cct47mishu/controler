@@ -42,7 +42,7 @@
             // Populate the table with the received data
             var tableBody = $('#data-table');
             tableBody.empty(); // Clear existing data if any
-           
+            var xy=0
             $.each(data, function(index, ipDataWrapper) {
                 // Since each element in the data is a single IP object
                 
@@ -50,7 +50,7 @@
                     var emailCount = Object.keys(innerDataWrapper[ip]).length; // Number of emails under this IP
 
                     var ipDisplayed = false; // Track if IP has been displayed
-                    var xy=0
+                    
                     // Iterate over the inner data
                     $.each(innerDataWrapper, function(ipAgain, emails) {
                         // Loop through the emails
@@ -101,10 +101,11 @@
 
                             // Append the row to the table body
                             tableBody.append(row);
-                            document.querySelector("#detailstxt span").textContent=xy+details.count
+                            xy=xy+details.count
                         });
                     });
                 });
+                document.querySelector("#detailstxt span").textContent=xy
             });
         },
         error: function(error) {
