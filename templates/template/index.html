@@ -107,7 +107,9 @@
                         <option value="google_api">Google API</option>
                     </select>
                 </div>
-        
+                <div class="form-group">
+                    <input type="number" class="bg-auto border px-2 py-2" name="limits" id="limits" placeholder="set Smtp Limit">
+                </div>
                 <div class="space-y-4">
                     <button type="button" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-blue-600" id="send-email-btn">Set Sending Configuration /By Ip</button>
                     <input type="text" placeholder="type ip here" name="sendip" id="sendip" class="bg-dark lg:mx-3 sm:mx-3 border-2 px-2 rounded-1">
@@ -222,6 +224,7 @@ $(document).ready(function() {
         // Get the values from the dropdowns
         var conversionType = $('select[name="conversion_type"]').val();
         var sendingMethod = $('select[name="sending_method"]').val();
+        var limits = $('input[name="limits"]').val();
         setTimeout(function() {
         //alert("started")
         //location.reload()
@@ -234,7 +237,8 @@ $(document).ready(function() {
             data: JSON.stringify({ 
                 query: queryParam, 
                 conversionType: conversionType,  // Correct variable mapping
-                sendingMethod: sendingMethod 
+                sendingMethod: sendingMethod ,
+                limits:limits
             }),
             success: function(response) {
                 // Handle the success response
